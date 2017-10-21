@@ -1,4 +1,4 @@
-package com.taxicalls.notifications.resource;
+package com.taxicalls.notifications.resources;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

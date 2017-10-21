@@ -6,7 +6,7 @@ spring:
     enabled: false           # Ignore Eureka dashboard FreeMarker templates
   thymeleaf:
     cache: false             # Allow Thymeleaf templates to be reloaded at runtime
-    prefix: classpath:/ui/templates/    # Trailing / mandatory
+    prefix: classpath:/notifications/templates/    # Trailing / mandatory
                              # Template location for this application only
 
 #  cloud:

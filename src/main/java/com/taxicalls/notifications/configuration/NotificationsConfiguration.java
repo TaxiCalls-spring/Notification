@@ -1,4 +1,4 @@
-package com.taxicalls.notifications.repository;
+package com.taxicalls.notifications.configuration;
 
 import java.util.logging.Logger;
 
