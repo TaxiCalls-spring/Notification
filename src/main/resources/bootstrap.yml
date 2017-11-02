@@ -1,12 +1,12 @@
 # Spring properties
 spring:
   application:
-    name: notifications  # Service registers under this name
+    name: notification  # Service registers under this name
   freemarker:
     enabled: false           # Ignore Eureka dashboard FreeMarker templates
   thymeleaf:
     cache: false             # Allow Thymeleaf templates to be reloaded at runtime
-    prefix: classpath:/notifications/templates/    # Trailing / mandatory
+    prefix: classpath:/notification/templates/    # Trailing / mandatory
                              # Template location for this application only
 
 #  cloud:

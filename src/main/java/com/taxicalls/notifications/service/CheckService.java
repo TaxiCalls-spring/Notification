@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.taxicalls.notifications.model.Notification;
 import java.util.Collection;
 import com.taxicalls.notifications.repository.NotificationRepository;
+import com.taxicalls.notifications.resources.CheckNotificationsRequest;
 
 /**
  *
@@ -32,10 +33,13 @@ public class CheckService {
         LOGGER.log(Level.INFO, "NotificationRepository says system has {0} accounts", notificationRepository.count());
     }
 
-    public Collection<Notification> checkNotifications(Integer id) {
+    public Collection<Notification> checkNotifications(CheckNotificationsRequest checkNotificationsRequest) {
+        LOGGER.log(Level.INFO, "checkNotifications() invoked");
+        Long id = checkNotificationsRequest.getId();
+        String entity = checkNotificationsRequest.getEntity();
         Collection<Notification> notifications = new ArrayList<>();
         for (Notification notification : notificationRepository.findAll()) {
-            if (notification.getToId().equals(id)) {
+            if (notification.getToEntity().equals(entity) && notification.getToId().equals(id)) {
                 notifications.add(notification);
             }
         }

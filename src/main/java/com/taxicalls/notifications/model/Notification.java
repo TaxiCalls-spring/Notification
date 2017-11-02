@@ -24,29 +24,48 @@ public class Notification implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date sentTime;
     private String fromEntity;
-    private Integer fromId;
+    private Long fromId;
     private String toEntity;
-    private Integer toId;
+    private Long toId;
     private String content;
 
     public Notification() {
     }
 
-    public Notification(Integer id) {
+    public Notification(Long id) {
         this.id = id;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public Integer getToId() {
+    public Date getSentTime() {
+        return sentTime;
+    }
+
+    public String getFromEntity() {
+        return fromEntity;
+    }
+
+    public Long getFromId() {
+        return fromId;
+    }
+
+    public String getToEntity() {
+        return toEntity;
+    }
+
+    public Long getToId() {
         return toId;
     }
 
+    public String getContent() {
+        return content;
+    }
 }

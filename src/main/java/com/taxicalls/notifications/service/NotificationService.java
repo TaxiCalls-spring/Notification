@@ -48,7 +48,7 @@ public class NotificationService {
         return notifications;
     }
 
-    public Notification getNotification(Integer id) {
+    public Notification getNotification(Long id) {
         Notification notification = notificationRepository.findOne(id);
         return notification;
     }

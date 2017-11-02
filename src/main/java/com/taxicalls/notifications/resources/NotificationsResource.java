@@ -7,29 +7,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import com.taxicalls.notifications.service.NotificationService;
-import java.util.List;
+import com.taxicalls.protocol.Response;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
 @RequestMapping("notifications")
 public class NotificationsResource {
 
+    protected static final Logger LOGGER = Logger.getLogger(NotificationsResource.class.getName());
+
     @Autowired
     private NotificationService notificationService;
 
-    @RequestMapping(method = RequestMethod.POST, value = "/")
-    public Notification createNotification(Notification notification) {
-        return notificationService.createNotification(notification);
+    @RequestMapping(method = RequestMethod.POST)
+    public Response createNotification(@RequestBody Notification notification) {
+        LOGGER.log(Level.INFO, "createNotification() invoked");
+        Notification createNotification = notificationService.createNotification(notification);
+        return Response.successful(createNotification);
     }
 
-    @RequestMapping("/")
-    public List<Notification> getNotifications() {
-        return notificationService.getNotifications();
+    @RequestMapping
+    public Response getNotifications() {
+        return Response.successful(notificationService.getNotifications());
     }
 
     @RequestMapping(value = "/{id}")
-    public Notification getNotification(@PathVariable("id") Integer id) {
-        return notificationService.getNotification(id);
+    public Response getNotification(@PathVariable("id") Long id) {
+        Notification notification = notificationService.getNotification(id);
+        if (notification == null) {
+            return Response.notFound();
+        }
+        return Response.successful(notification);
     }
 
 }
