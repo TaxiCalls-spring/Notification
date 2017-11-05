@@ -1,12 +1,12 @@
-package com.taxicalls.notifications.resources;
+package com.taxicalls.notification.resources;
 
-import com.taxicalls.notifications.model.Notification;
+import com.taxicalls.notification.model.Notification;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import com.taxicalls.notifications.service.NotificationService;
+import com.taxicalls.notification.service.NotificationService;
 import com.taxicalls.protocol.Response;
 import java.util.logging.Level;
 import java.util.logging.Logger;

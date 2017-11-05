@@ -1,6 +1,6 @@
-package com.taxicalls.notifications.repository;
+package com.taxicalls.notification.repository;
 
-import com.taxicalls.notifications.model.Notification;
+import com.taxicalls.notification.model.Notification;
 import org.springframework.data.repository.CrudRepository;
 
 public interface NotificationRepository extends CrudRepository<Notification, Long> {

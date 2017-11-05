@@ -1,4 +1,4 @@
-package com.taxicalls.notifications.configuration;
+package com.taxicalls.notification.configuration;
 
 import java.util.logging.Logger;
 
@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @ComponentScan
-@EntityScan("com.taxicalls.notifications.model")
-@EnableJpaRepositories("com.taxicalls.notifications.repository")
+@EntityScan("com.taxicalls.notification.model")
+@EnableJpaRepositories("com.taxicalls.notification.repository")
 @PropertySource("classpath:db-config.properties")
 public class NotificationsConfiguration {
 

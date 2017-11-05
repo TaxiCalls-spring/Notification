@@ -1,6 +1,6 @@
-package com.taxicalls.notifications;
+package com.taxicalls.notification;
 
-import com.taxicalls.notifications.configuration.NotificationsConfiguration;
+import com.taxicalls.notification.configuration.NotificationsConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;

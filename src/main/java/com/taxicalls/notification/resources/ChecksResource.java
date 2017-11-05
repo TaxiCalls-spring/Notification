@@ -1,6 +1,6 @@
-package com.taxicalls.notifications.resources;
+package com.taxicalls.notification.resources;
 
-import com.taxicalls.notifications.service.CheckService;
+import com.taxicalls.notification.service.CheckService;
 import com.taxicalls.protocol.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;

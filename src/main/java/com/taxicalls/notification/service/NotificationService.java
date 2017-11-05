@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.taxicalls.notifications.service;
+package com.taxicalls.notification.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +11,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.taxicalls.notifications.model.Notification;
-import com.taxicalls.notifications.repository.NotificationRepository;
+import com.taxicalls.notification.model.Notification;
+import com.taxicalls.notification.repository.NotificationRepository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -32,6 +33,7 @@ public class NotificationService {
         LOGGER.log(Level.INFO, "NotificationRepository says system has {0} accounts", notificationRepository.count());
     }
 
+    @Transactional
     public Notification createNotification(Notification notification) {
         Notification save = notificationRepository.save(notification);
         return save;

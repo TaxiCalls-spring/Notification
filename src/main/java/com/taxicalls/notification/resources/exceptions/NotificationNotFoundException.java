@@ -1,4 +1,4 @@
-package com.taxicalls.notifications.resources.exceptions;
+package com.taxicalls.notification.resources.exceptions;
 
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.http.HttpStatus;

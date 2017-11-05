@@ -3,17 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.taxicalls.notifications.service;
+package com.taxicalls.notification.service;
 
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.taxicalls.notifications.model.Notification;
+import com.taxicalls.notification.model.Notification;
 import java.util.Collection;
-import com.taxicalls.notifications.repository.NotificationRepository;
-import com.taxicalls.notifications.resources.CheckNotificationsRequest;
+import com.taxicalls.notification.repository.NotificationRepository;
+import com.taxicalls.notification.resources.CheckNotificationsRequest;
+import java.util.Date;
 
 /**
  *
@@ -24,7 +25,6 @@ public class CheckService {
 
     protected static final Logger LOGGER = Logger.getLogger(CheckService.class.getName());
 
-    @Autowired
     protected NotificationRepository notificationRepository;
 
     @Autowired
@@ -37,13 +37,15 @@ public class CheckService {
         LOGGER.log(Level.INFO, "checkNotifications() invoked");
         Long id = checkNotificationsRequest.getId();
         String entity = checkNotificationsRequest.getEntity();
-        Collection<Notification> notifications = new ArrayList<>();
+        Collection<Notification> filteredNotifications = new ArrayList<>();
         for (Notification notification : notificationRepository.findAll()) {
-            if (notification.getToEntity().equals(entity) && notification.getToId().equals(id)) {
-                notifications.add(notification);
+          if (notification.getToEntity().equals(entity) && notification.getToId().equals(id) && notification.getSentTime() == null) {
+                filteredNotifications.add(notification);
+                notification.setSentTime(new Date());
+                notificationRepository.save(notification);
             }
         }
-        return notifications;
+        return filteredNotifications;
     }
 
 }
