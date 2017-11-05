@@ -39,7 +39,13 @@ public class CheckService {
         String entity = checkNotificationsRequest.getEntity();
         Collection<Notification> filteredNotifications = new ArrayList<>();
         for (Notification notification : notificationRepository.findAll()) {
-          if (notification.getToEntity().equals(entity) && notification.getToId().equals(id) && notification.getSentTime() == null) {
+            if (notification.getToId() == null) {
+                continue;
+            }
+            if (notification.getToEntity() == null) {
+                continue;
+            }
+            if (notification.getToEntity().equals(entity) && notification.getToId().equals(id) && notification.getSentTime() == null) {
                 filteredNotifications.add(notification);
                 notification.setSentTime(new Date());
                 notificationRepository.save(notification);
